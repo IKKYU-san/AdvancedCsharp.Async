@@ -1,7 +1,7 @@
 ﻿namespace AdvancedCsharp.Async
 {
     using System;
-
+    using System.Threading.Tasks;
     class AsyncAssignement
     {
         class ConsoleService
@@ -38,7 +38,7 @@
 
         class MagicProblemSolver
         {
-            public static long FindPrimeNumber(long position)
+            public static async Task<long> FindPrimeNumber(long position)
             {
                 int count = 0;
                 long a = 2;
@@ -64,14 +64,14 @@
           
         }
 
-        void FindPrimeNumberAndRespond(long position)
+        async Task FindPrimeNumberAndRespond(long position)
         {
-            var prime = MagicProblemSolver.FindPrimeNumber(position);
+            long prime = await MagicProblemSolver.FindPrimeNumber(position);
             var cs = new ConsoleService();
             cs.WriteResponse($"På position {position} finns primtalet {prime}");
         }
 
-        public void Run()
+        public async void Run()
         {
             var cs = new ConsoleService();
             while (true)
@@ -88,7 +88,7 @@
                     }
                     else
                     {
-                        FindPrimeNumberAndRespond(position);
+                        await FindPrimeNumberAndRespond(position);
                     }
                 }
                 else

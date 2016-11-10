@@ -8,7 +8,7 @@ namespace AdvancedCsharp.Async
         {
             SetupConsoleWindow();
 
-            new AsyncExample1().Run();
+            new AsyncAssignement().Run();
 
             StopAndWaitForUser();
         }
