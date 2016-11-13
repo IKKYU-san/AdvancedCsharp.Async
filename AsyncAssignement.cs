@@ -38,7 +38,7 @@
 
         class MagicProblemSolver
         {
-            public static async Task<long> FindPrimeNumber(long position)
+            public static long FindPrimeNumber(long position)
             {
                 int count = 0;
                 long a = 2;
@@ -64,14 +64,14 @@
           
         }
 
-        async Task FindPrimeNumberAndRespond(long position)
+        void FindPrimeNumberAndRespond(long position)
         {
-            long prime = await MagicProblemSolver.FindPrimeNumber(position);
+            long prime = MagicProblemSolver.FindPrimeNumber(position);
             var cs = new ConsoleService();
             cs.WriteResponse($"På position {position} finns primtalet {prime}");
         }
 
-        public async void Run()
+        public void Run()
         {
             var cs = new ConsoleService();
             while (true)
@@ -88,7 +88,7 @@
                     }
                     else
                     {
-                        await FindPrimeNumberAndRespond(position);
+                        Task.Run(() => FindPrimeNumberAndRespond(position));
                     }
                 }
                 else
